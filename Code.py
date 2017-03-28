@@ -29,34 +29,16 @@ score = response.text
 score = json.loads(score)
 l = len(score["Matches"])
 
-team_A = []
-team_B = []
+li = []
 
 for i in range(0,l):
-    team_A.append(score["Matches"][i]["Team A"])
-    team_B.append(score["Matches"][i]["Team B"])
+    li.append(score["Matches"][i]["Team A"] + " vs " + score["Matches"][i]["Team B"])
 
-sequence = ["Index", "Team A", "Team B"]
-
-print color.GREEN + color.BOLD + color.UNDERLINE + str("The following matches are being played currently : ") + color.END
-print "\n"
-
-t = PrettyTable(sequence)
-
-for i in range(0, len(team_A)):
-    t.add_row([str(i+1), team_A[i], team_B[i]])
-
-print t
-
-final_list = []
-for i,j in zip(team_A, team_B):
-    final_list.append(str(i) + " vs " + str(j))
-
-choice = int(raw_input(color.RED + color.BOLD + "\nEnter your choice : " + color.END))
+# print li
 
 # Notification Tool
 
 notify2.init("Cricket Notifier")
-n = notify2.Notification("Live Scores", str(final_list[choice - 1]))
+n = notify2.Notification("Live Scores", str(li))
 n.show()
 
