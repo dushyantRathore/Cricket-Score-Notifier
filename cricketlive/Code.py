@@ -23,8 +23,6 @@ def getscore():
     for i in range(0,l):
         result += str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
 
-    print result
-
     # Notification Tool
 
     notify2.init("Cricket Notifier")
