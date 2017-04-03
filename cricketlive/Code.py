@@ -1,6 +1,19 @@
 import notify2
 import requests
 import json
+import time
+
+class Colour:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
 
 
 def getscore():
@@ -20,14 +33,22 @@ def getscore():
 
     result = ''
 
-    for i in range(0,l):
-        result += str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
+    if l > 5:
+        for i in range(0,5):
+            result += str(i+1) + ") " + str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
+    else:
+        for i in range(0,l):
+            result += str(i+1) + ") " + str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
 
     # Notification Tool
 
+    icon_path = "/home/dushyant/Desktop/Github/Cricket-Score-Notifier/cricketlive/icon.jpg"
+
     notify2.init("Cricket Notifier")
-    n = notify2.Notification("Live Scores", result)
+    n = notify2.Notification("Live Scores", icon=icon_path)
+    n.update("Live Scores", result)
     n.show()
+
 
 if __name__ == "__main__":
     getscore()
