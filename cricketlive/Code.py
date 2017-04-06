@@ -31,12 +31,14 @@ def getscore():
 
     l = len(score["Matches"])
 
+    print l
+
     result = ''
 
     if l > 5:
         for i in range(0, 5):
             result += str(i+1) + ") " + str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
-    elif l < 5 and l != 0:
+    elif l > 0 and l <= 5:
         for i in range(0, l):
             result += str(i+1) + ") " + str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
     else:
