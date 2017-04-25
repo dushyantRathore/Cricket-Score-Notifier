@@ -31,7 +31,7 @@ def getscore():
 
     l = len(score["Matches"])
 
-    print l
+    print (l)
 
     result = ''
 
