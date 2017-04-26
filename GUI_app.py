@@ -1,6 +1,8 @@
 import os
 import signal
 import gi
+import requests
+import json
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
@@ -22,16 +24,27 @@ def main():
 
 def score_menu():
     main_menu = gtk.Menu()
-    item1 = gtk.MenuItem("Score")
-    item2 = gtk.SeparatorMenuItem()
-    item3 = gtk.MenuItem("Exit")
 
-    main_menu.append(item1)
-    main_menu.append(item2)
-    main_menu.append(item3)
+    x = get_score()
+    l = len(x["Matches"])
+
+    for i in range(0, l):
+        r = ' '
+        r += "Teams - " + str(x["Matches"][i]["Team A"]) + " v/s " + str(x["Matches"][i]["Team B"]) + "\n"
+        r += "Status - " + x["Matches"][i]["Status"].encode('utf-8').strip()
+        main_menu.append(gtk.MenuItem(r))
+        main_menu.append(gtk.SeparatorMenuItem())
 
     main_menu.show_all()
     return main_menu
+
+
+def get_score():
+    url = "https://powerful-tor-13817.herokuapp.com/live"
+    response = requests.get(url)
+    response = json.loads(response.text)
+
+    return response
 
 if __name__ == "__main__":
     main()
