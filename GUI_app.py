@@ -26,14 +26,40 @@ def score_menu():
     main_menu = gtk.Menu()
 
     x = get_score()
-    l = len(x["Matches"])
+    l1 = len(x["Matches"])
+    y = get_news()
+    l2 = len(y["Latest News"])
 
-    for i in range(0, l):
+    score = gtk.MenuItem("Live Score")
+    news = gtk.MenuItem("Latest News")
+    exit = gtk.MenuItem("Exit")
+    exit.connect('activate', stop)
+    sep = gtk.SeparatorMenuItem()
+
+    score_submenu = gtk.Menu()
+    for i in range(0, l1):
         r = ' '
         r += "Teams - " + str(x["Matches"][i]["Team A"]) + " v/s " + str(x["Matches"][i]["Team B"]) + "\n"
         r += "Status - " + x["Matches"][i]["Status"].encode('utf-8').strip()
-        main_menu.append(gtk.MenuItem(r))
-        main_menu.append(gtk.SeparatorMenuItem())
+        score_submenu.append(gtk.MenuItem(r))
+        score_submenu.append(gtk.SeparatorMenuItem())
+
+    score.set_submenu(score_submenu)
+
+    news_submenu = gtk.Menu()
+    for j in range(0, l2):
+        r = ' '
+        r += str(y["Latest News"][j]["Title"])
+        news_submenu.append(gtk.MenuItem(r))
+        news_submenu.append(gtk.SeparatorMenuItem())
+
+    news.set_submenu(news_submenu)
+
+    main_menu.append(score)
+    main_menu.append(sep)
+    main_menu.append(news)
+    main_menu.append(sep)
+    main_menu.append(exit)
 
     main_menu.show_all()
     return main_menu
@@ -45,6 +71,19 @@ def get_score():
     response = json.loads(response.text)
 
     return response
+
+
+def get_news():
+    url = "https://powerful-tor-13817.herokuapp.com/news"
+    response = requests.get(url)
+    response = json.loads(response.text)
+
+    return response
+
+
+def stop(self):
+    gtk.main_quit()
+
 
 if __name__ == "__main__":
     main()
