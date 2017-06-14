@@ -26,8 +26,10 @@ def score_menu():
     main_menu = gtk.Menu()
 
     x = get_score()
+    print x
     l1 = len(x["Matches"])
     y = get_news()
+    print y
     l2 = len(y["Latest News"])
 
     score = gtk.MenuItem("Live Score")
