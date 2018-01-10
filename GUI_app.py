@@ -1,3 +1,5 @@
+#!/usr/bin/python3.5
+
 import os
 import signal
 import gi
@@ -26,10 +28,10 @@ def score_menu():
     main_menu = gtk.Menu()
 
     x = get_score()
-    print x
+    print(x)
     l1 = len(x["Matches"])
     y = get_news()
-    print y
+    print(y)
     l2 = len(y["Latest News"])
 
     score = gtk.MenuItem("Live Score")
@@ -42,7 +44,7 @@ def score_menu():
     for i in range(0, l1):
         r = ' '
         r += "Teams - " + str(x["Matches"][i]["Team A"]) + " v/s " + str(x["Matches"][i]["Team B"]) + "\n"
-        r += "Status - " + x["Matches"][i]["Status"].encode('utf-8').strip()
+        r += "Status - " + str(x["Matches"][i]["Status"].encode('utf-8').strip())
         score_submenu.append(gtk.MenuItem(r))
         score_submenu.append(gtk.SeparatorMenuItem())
 
