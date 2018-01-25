@@ -31,7 +31,7 @@ def getscore():
 
     l = len(score["Matches"])
 
-    print (l)
+    # print (l)
 
     result = ''
 
@@ -43,6 +43,8 @@ def getscore():
             result += str(i+1) + ") " + str(score["Matches"][i]["Team A"]) + " vs " + str(score["Matches"][i]["Team B"] + "\n")
     else:
         result += "No matches being played currently"
+
+    print (result)
 
     # Notification Tool
 
