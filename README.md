@@ -14,7 +14,5 @@ Desktop Notification and GUI for **Live Cricket Scores**
 <br><br>
 
 **Screenshots**
-<br>
-* GUI 
-<br>
+<br><br>
 ![GUI](https://user-images.githubusercontent.com/17358196/35372027-a64e9342-01bd-11e8-8dcf-f27691d4487d.jpg)
