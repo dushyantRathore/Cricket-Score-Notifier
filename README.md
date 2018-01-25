@@ -7,10 +7,12 @@ Desktop Notification and GUI for **Live Cricket Scores**
 3. For the desktop notifier, run `python3.5 Code.py`
 4. For the GUI, run `python3.5 GUI_app.py`
 <br><br>
+
 **Requirements**
 * python3.5
 * notify2
 <br><br>
+
 **Screenshots**
 <br>
 * GUI 
