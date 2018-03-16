@@ -1,1 +1,2 @@
 notify2
+requests>=2.18.2

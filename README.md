@@ -1,16 +1,17 @@
 # Cricket-Score-Notifier
-Desktop Notification and GUI for **Live Cricket Scores**
+GUI for **Live Cricket Scores**
 <br><br>
 **Setup/Installation**
 1. Clone the repository
 2. `cd` into `cricketlive`
-3. For the desktop notifier, run `python3.5 Code.py`
-4. For the GUI, run `python3.5 GUI_app.py`
+3. For the GUI, run `python3.5 GUI_app.py`
 <br><br>
 
 **Requirements**
 * python3.5
 * notify2
+* requests>=2.18.2
+* python3-gi - Install using `sudo apt install python3-gi`
 <br><br>
 
 **Screenshots**
